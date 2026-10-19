@@ -1,0 +1,168 @@
+# Build InterviewAce AI — Smart AI Interview Preparation Platform
+
+Create a complete, modern, fully functional web application called **InterviewAce AI** that helps students prepare for job interviews at companies like Google, Amazon, Microsoft, and other technology companies.
+
+## 1. Technology Stack
+- Frontend: HTML, CSS, JavaScript
+- Backend: Python FastAPI
+- Database: MongoDB Atlas
+- AI: Google Gemini API
+- Voice interview: Browser Speech Recognition and Text-to-Speech APIs
+- Charts: Chart.js
+- Deployment: Replit
+
+## 2. Modern UI Design
+Build a professional SaaS-style dashboard with:
+- Responsive design for desktop and mobile
+- Modern dark navy and blue theme
+- Sidebar navigation
+- Clean cards, charts, animations, and loading indicators
+- Professional typography and accessible controls
+
+## 3. Authentication
+Implement:
+- User registration and login
+- Secure password hashing
+- Session or JWT-based authentication
+- Logout functionality
+- User-specific interview history and progress
+- Environment variables for all secrets
+
+Never store plain-text passwords or expose API keys in frontend code.
+
+## 4. Dashboard
+Display:
+- Total interviews completed
+- Average interview score
+- Technical and communication scores
+- Recent interview history
+- Skill improvement chart
+- Recommended next steps
+
+Load real data from the backend and database rather than hardcoded statistics.
+
+## 5. AI Mock Interview
+Allow users to select:
+- Target job role: Python Developer, Java Developer, Frontend Developer, Backend Developer, Full Stack Developer, Data Analyst, or AI Engineer
+- Difficulty: Beginner, Intermediate, or Advanced
+- Interview type: Technical, HR, Behavioral, or Mixed
+- Number of questions: 5, 10, or 15
+
+Use Gemini to generate relevant interview questions. Present one question at a time.
+
+Provide:
+- Text-based answers
+- Voice input where browser support is available
+- Text-to-speech to read questions aloud
+- A timer and interview progress indicator
+- Next-question and finish-interview controls
+- A results page after submission
+
+If voice recognition is unavailable, allow the user to answer using text.
+
+## 6. AI Answer Evaluation
+Evaluate each answer using Gemini and return:
+- Overall score out of 100
+- Technical accuracy
+- Communication and clarity
+- Relevance to the question
+- Strengths
+- Missing concepts
+- Suggested improved answer
+- Specific recommendations for improvement
+
+Return structured JSON from the backend, validate AI responses, and handle invalid responses safely. Clearly label AI-generated feedback as an estimate, not an actual employer assessment.
+
+## 7. Resume Analyzer
+Allow PDF resume uploads. Extract text securely and analyze:
+- Skills detected
+- Education and projects
+- Resume strengths
+- Missing or underrepresented skills
+- ATS-style keyword coverage
+- Suggestions tailored to a selected job role
+
+Validate file types and file sizes. Never claim an exact ATS score unless it is clearly defined as an estimate.
+
+## 8. Coding Practice
+Create a coding practice section with:
+- Programming questions by difficulty
+- Python, Java, and C++ categories
+- Code editor with syntax highlighting
+- Sample input and output
+- Test cases
+- Submission results and explanations
+
+Execute submitted code only inside a secure, isolated sandbox with resource limits and no unrestricted network or filesystem access. Do not execute arbitrary user code directly on the main FastAPI server.
+
+## 9. Skill Gap Analysis
+Let users choose a target job role and enter or select their current skills. Compare them with a configurable role-specific skill checklist.
+
+Display:
+- Existing skills
+- Missing skills
+- Recommended learning order
+- Suggested projects
+- A practical learning roadmap
+
+Clearly distinguish configurable recommendations from verified employer requirements.
+
+## 10. Database
+Use MongoDB with collections for:
+- users
+- interviews
+- interview_answers
+- resume_analyses
+- coding_submissions
+- user_progress
+
+Create appropriate indexes and ensure every private record is associated with the authenticated user. Store only necessary data and avoid logging sensitive resume content or credentials.
+
+## 11. FastAPI Backend
+Implement documented REST API endpoints, including:
+- POST /api/auth/register
+- POST /api/auth/login
+- GET /api/auth/me
+- GET /api/dashboard
+- POST /api/interviews
+- POST /api/interviews/{interview_id}/answer
+- POST /api/interviews/{interview_id}/finish
+- GET /api/interviews/history
+- POST /api/resume/analyze
+- GET /api/skills/roadmap
+- GET /api/health
+
+Add request validation, authentication, authorization, error handling, and appropriate CORS configuration. Keep API responses consistent and document the endpoints in FastAPI Swagger UI.
+
+## 12. Configuration
+Create a .env.example file containing placeholders for:
+- GEMINI_API_KEY
+- MONGODB_URL
+- JWT_SECRET_KEY
+- Other required configuration values
+
+Read actual secrets from Replit Secrets or environment variables. Never commit real secrets to GitHub. Provide clear setup instructions for obtaining the API key and configuring MongoDB.
+
+## 13. Reliability
+- Connect every frontend button and form to a working feature.
+- Show loading, success, empty, and error states.
+- Handle missing API keys and database connection failures with helpful messages.
+- Do not display fake interview results or pretend that a failed API call succeeded.
+- Include basic automated tests for authentication, API validation, and interview evaluation.
+- Add a README with setup and deployment instructions.
+- Ensure the app starts correctly using Replit's Run button.
+
+## 14. Final Requirements
+First inspect the generated project structure and choose a coherent architecture. Then implement the application in working stages.
+
+Prioritize a functional MVP with authentication, the dashboard, AI mock interviews, answer evaluation, MongoDB persistence, and interview history. Add resume analysis, coding practice, and skill gap analysis after the core features work.
+
+Do not create only a static UI or a demo with hardcoded data. Implement and test the frontend-to-backend-to-database flow. If a required external service is not configured, explain exactly which Replit Secret is missing and how to configure it.
+
+At the end, provide:
+1. The completed project structure.
+2. Required Replit Secrets.
+3. Exact run instructions.
+4. API documentation URL.
+5. Features tested successfully.
+6. Any remaining setup requirements or limitations.
